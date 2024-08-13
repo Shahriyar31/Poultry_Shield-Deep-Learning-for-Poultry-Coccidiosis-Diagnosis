@@ -15,8 +15,8 @@ AUTHOR_EMAIL = "Shahriyarfarhan3101@gmail.com"
 setuptools.setup(
     name=SRC_REPO,
     version=__version__,
-    author=AUTHOR_USER_NAME,
-    author_email=AUTHOR_EMAIL,
+    author=Shahriyar31,
+    author_email=shahriyarfarhan3101@gmail.com,
     description="A small python package for Poultry_Shield app",
     long_description=long_description,
     long_description_content="text/markdown",
