@@ -22,7 +22,9 @@ list_of_files = [
     "requirements.txt",
     "setup.py",
     "research/trials.ipynb",
+    "templates/index.html",
 ]
+
 
 for file in list_of_files:
     filepath = Path(file)
@@ -39,3 +41,16 @@ for file in list_of_files:
 
     else:
         logging.info(f"{filepath} already exists")
+
+        
+        
+
+
+
+
+
+
+
+
+
+

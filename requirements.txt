@@ -1,1 +1,16 @@
-# Placeholder
+tensorflow
+numpy
+pandas
+matplotlib
+seaborn
+notebook
+Flask
+Flask-Cors
+ensure==1.0.2
+python-box==6.0.2
+pyYAML
+tqdm
+scipy
+joblib
+dvc
+types-PyYAML
