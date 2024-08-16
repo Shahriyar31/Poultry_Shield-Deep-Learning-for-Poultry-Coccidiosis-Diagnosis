@@ -1,0 +1,117 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/Poultry_Shield/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 6e722cdea8485792f15c538e684181b5
+      size: 836
+    - path: src/Poultry_Shield/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 143007407dd17c297582ba8925872fda
+      size: 1020
+    outs:
+    - path: artifacts/data_ingestion/Datasets
+      hash: md5
+      md5: 67aff02745869de433f867bd441e6129.dir
+      size: 131937314
+      nfiles: 4160
+  prepare_base_model:
+    cmd: python src/Poultry_Shield/pipeline/stage_02_prepare_base_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 6e722cdea8485792f15c538e684181b5
+      size: 836
+    - path: src/Poultry_Shield/pipeline/stage_02_prepare_base_model.py
+      hash: md5
+      md5: b60481717b1c9d303aa81835848a70a5
+      size: 1114
+    params:
+      params.yaml:
+        CLASSES: 2
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+        INCLUDE_TOP: false
+        LEARNING_RATE: 0.01
+        WEIGHTS: imagenet
+    outs:
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: b6d32320ff718ca69d05f431bab5d106.dir
+      size: 118073464
+      nfiles: 2
+  training:
+    cmd: python src/Poultry_Shield/pipeline/stage_03_training.py
+    deps:
+    - path: artifacts/data_ingestion/Datasets
+      hash: md5
+      md5: 67aff02745869de433f867bd441e6129.dir
+      size: 131937314
+      nfiles: 4160
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: b6d32320ff718ca69d05f431bab5d106.dir
+      size: 118073464
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: 6e722cdea8485792f15c538e684181b5
+      size: 836
+    - path: src/Poultry_Shield/components/prepare_callbacks.py
+      hash: md5
+      md5: 175c3ec8ae03114f8e8bfbf9050a80b7
+      size: 973
+    - path: src/Poultry_Shield/pipeline/stage_03_training.py
+      hash: md5
+      md5: cabe3bc266a842220ca3a0f2faea199f
+      size: 1584
+    params:
+      params.yaml:
+        AUGMENTATION: true
+        BATCH_SIZE: 16
+        EPOCHS: 1
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: 21ba18a536ed22f9305575821a7e2a42
+      size: 59551208
+  evaluation:
+    cmd: python src/Poultry_Shield/pipeline/stage_04_evaluation.py
+    deps:
+    - path: artifacts/data_ingestion/Datasets
+      hash: md5
+      md5: 67aff02745869de433f867bd441e6129.dir
+      size: 131937314
+      nfiles: 4160
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: 21ba18a536ed22f9305575821a7e2a42
+      size: 59551208
+    - path: config/config.yaml
+      hash: md5
+      md5: 6e722cdea8485792f15c538e684181b5
+      size: 836
+    - path: src/Poultry_Shield/pipeline/stage_04_evaluation.py
+      hash: md5
+      md5: 56f76a0c0b26ea3e4a742d6e38df2425
+      size: 1044
+    params:
+      params.yaml:
+        BATCH_SIZE: 16
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: scores.json
+      hash: md5
+      md5: 72a434185a3deb81c7ce06d83706c0c5
+      size: 71

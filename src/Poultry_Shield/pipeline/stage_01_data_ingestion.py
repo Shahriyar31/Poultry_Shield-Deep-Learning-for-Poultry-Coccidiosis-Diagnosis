@@ -1,6 +1,10 @@
+import sys
+sys.path.append('/home/farhan-shahriyar/Deep_Learning/Poultry_Shield-Deep-Learning-for-Poultry-Coccidiosis-Diagnosis/src')
+
 from Poultry_Shield.config.configuration import ConfigurationManager
 from Poultry_Shield.components.data_ingestion import DataIngestion
 from Poultry_Shield import logger
+
 
 
 STAGE_NAME = "Data Ingestion stage"
