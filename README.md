@@ -136,7 +136,3 @@ For any questions or suggestions, feel free to contact:
 - **Author:** Farhan Shahriyar
 - **Email:** shahriyarfarhan3101@gmail.com
 - **GitHub:** [Shahriyar31](https://github.com/Shahriyar31)
-
----
-
-Feel free to replace any placeholder text (like `path_to_logo_image`, `path_to_architecture_diagram`, etc.) with the actual content. This README provides a clear and professional overview of your project, making it easy for others to understand and use.
