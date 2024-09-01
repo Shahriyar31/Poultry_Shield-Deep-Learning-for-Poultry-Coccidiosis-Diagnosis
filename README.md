@@ -1,7 +1,5 @@
 # Poultry Shield: Deep Learning for Poultry Coccidiosis Diagnosis 🐔
 
-![Poultry Shield Logo](path_to_logo_image) *(Optional: Add a logo or image related to the project)*
-
 ## Overview
 
 Poultry Shield is a deep learning-based application designed to assist in the early diagnosis of Coccidiosis in poultry, a prevalent parasitic disease that affects poultry health and productivity. This project leverages cutting-edge machine learning techniques to identify signs of Coccidiosis from poultry images, enabling timely interventions and reducing potential losses in poultry farming.
